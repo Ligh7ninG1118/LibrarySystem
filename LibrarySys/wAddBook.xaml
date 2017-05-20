@@ -1,0 +1,24 @@
+﻿<Window x:Class="LibrarySys.wAddBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibrarySys"
+        mc:Ignorable="d"
+        Title="Add Book" Height="230" Width="450">
+    <Grid>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="24" Margin="264,158,0,0" VerticalAlignment="Top" Width="71" Click="btnAdd_Click"/>
+        <Button x:Name="btnExit" Content="Cancel" HorizontalAlignment="Left" Height="24" Margin="354,158,0,0" VerticalAlignment="Top" Width="71" Click="btnExit_Click" RenderTransformOrigin="0.653,0.437"/>
+        <TextBox x:Name="txtBookName" HorizontalAlignment="Left" Height="25" Margin="24,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="txtPress" HorizontalAlignment="Left" Height="25" Margin="212,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Height="25" Margin="24,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.512,0.938"/>
+        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Height="25" Margin="210,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="lblBN" Content="Book Title" HorizontalAlignment="Left" Height="23" Margin="24,15,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="lblPR" Content="Press" HorizontalAlignment="Left" Height="23" Margin="212,15,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="Author" HorizontalAlignment="Left" Height="27" Margin="24,84,0,0" VerticalAlignment="Top" Width="47"/>
+        <Label Content="Publish Year" HorizontalAlignment="Left" Height="27" Margin="207,84,0,0" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtSN" HorizontalAlignment="Left" Height="25" Margin="315,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" />
+        <Label x:Name="lblSN" Content="Store Number" HorizontalAlignment="Left" Height="27" Margin="297,84,0,0" VerticalAlignment="Top" Width="85"/>
+
+    </Grid>
+</Window>

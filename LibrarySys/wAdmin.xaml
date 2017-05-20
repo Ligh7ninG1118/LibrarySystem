@@ -1,0 +1,40 @@
+﻿<Window x:Class="LibrarySys.wAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibrarySys"
+        mc:Ignorable="d"
+        Title="AdminTab" Height="768" Width="1280">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="720" Margin="10,10,0,0" VerticalAlignment="Top" Width="1255">
+            <TabItem Header="User Management" FontSize="20">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgAdm" HorizontalAlignment="Left" Height="165" Margin="48,97,0,0" VerticalAlignment="Top" Width="671" Loaded="dgAdm_Loaded" IsReadOnly="True" ItemsSource="{Binding}"  />
+                    <DataGrid x:Name="dgAll" HorizontalAlignment="Left" Height="276" Margin="48,334,0,0" VerticalAlignment="Top" Width="671" Loaded="dgAll_Loaded" IsReadOnly="True" ItemsSource="{Binding}"/>
+                    <Label Content="All Admins" HorizontalAlignment="Left" Height="60" Margin="51,48,0,0" VerticalAlignment="Top" Width="190"/>
+                    <Label Content="All Users" HorizontalAlignment="Left" Height="44" Margin="48,285,0,0" VerticalAlignment="Top" Width="190"/>
+                    <Button x:Name="btnAdm" Content ="Add Admin" HorizontalAlignment="Left" Height="60" Margin="936,285,0,0" VerticalAlignment="Top" Width="190" RenderTransformOrigin="0.497,0.57" Click="btnAdm_Click" />
+                    <Button x:Name="btnRefU" Content="Refresh" HorizontalAlignment="Left" Height="60" Margin="936,396,0,0" VerticalAlignment="Top" Width="190" Click="btnRef_Click"/>
+                    <Button x:Name="btnExitU" Content="Log Out" HorizontalAlignment="Left" Height="60" Margin="936,497,0,0" VerticalAlignment="Top" Width="190" Click="btnExit_Click"/>
+                    <Button x:Name="btnApv" Content="Approve" HorizontalAlignment="Left" Height="60" Margin="936,188,0,0" VerticalAlignment="Top" Width="190" Click="btnApv_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Library Management" FontSize="20">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgBooks" HorizontalAlignment="Left" Height="548" Margin="58,62,0,0" VerticalAlignment="Top" Width="864" Loaded="dgBooks_Loaded" ItemsSource="{Binding}"/>
+                    <Button x:Name="btnBook" Content="Add Book" HorizontalAlignment="Left" Height="60" Margin="968,106,0,0" VerticalAlignment="Top" Width="190" Click="btnBook_Click"/>
+                    <Button x:Name="btnEdit" Content="Edit Book Info" HorizontalAlignment="Left" Height="60" Margin="968,186,0,0" VerticalAlignment="Top" Width="190" Click="btnEdit_Click"/>
+                    <Button x:Name="btnRefB" Content="Refresh" HorizontalAlignment="Left" Height="60" Margin="968,266,0,0" VerticalAlignment="Top" Width="190" Click="btnRefB_Click"/>
+                    <Button x:Name="btnExitB" Content ="Log Out" HorizontalAlignment="Left" Height="60" Margin="968,346,0,0" VerticalAlignment="Top" Width="190" Click="btnExit_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
