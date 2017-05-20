@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="UserTab" Height="768" Width="1280">
     <Grid>
-        
+        <Grid Background="#FFE5E5E5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="dgBooks" HorizontalAlignment="Left" Height="548" Margin="58,62,0,0" VerticalAlignment="Top" Width="864" Loaded="dgBooks_Loaded" ItemsSource="{Binding}"  />
+                <Button x:Name="btnBor" Content="Borrow Book" HorizontalAlignment="Left" Height="60" Margin="968,106,0,0" VerticalAlignment="Top" Width="190" Click="btnBor_Click"/>
+                <Button x:Name="btnRtn" Content="Return Book" HorizontalAlignment="Left" Height="60" Margin="968,186,0,0" VerticalAlignment="Top" Width="190" Click="btnRtn_Click"/>
+                <Button x:Name="btnRef" Content="Refresh" HorizontalAlignment="Left" Height="60" Margin="968,266,0,0" VerticalAlignment="Top" Width="190" Click="btnRef_Click"/>
+                <Button x:Name="btnExit" Content ="Log Out" HorizontalAlignment="Left" Height="60" Margin="968,346,0,0" VerticalAlignment="Top" Width="190" Click="btnExit_Click" />
+            </Grid>
     </Grid>
 </Window>

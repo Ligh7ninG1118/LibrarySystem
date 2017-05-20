@@ -11,5 +11,6 @@
         <Button x:Name="btnRegi" Content="Register" HorizontalAlignment="Left" Height="50" Margin="71,297,0,0" VerticalAlignment="Top" Width="253" FontSize="20" Click="btnRegi_Click" Grid.ColumnSpan="2"/>
         <Button x:Name="btnExit" HorizontalAlignment="Left" Height="50" Margin="71,367,0,0" VerticalAlignment="Top" Width="253" FontSize="20" Content="Exit" Click="btnExit_Click" Grid.ColumnSpan="2"/>
         <Image x:Name="imgWelcome" HorizontalAlignment="Left" Height="150" Margin="50,39,0,0" VerticalAlignment="Top" Width="300" Source="Resources/imgWel.jpg" Grid.ColumnSpan="2"  />
+        
     </Grid>
 </Window>

@@ -64,6 +64,9 @@
     <Compile Include="wAdmin.xaml.cs">
       <DependentUpon>wAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="wBookEdit.xaml.cs">
+      <DependentUpon>wBookEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="wAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="wBookEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

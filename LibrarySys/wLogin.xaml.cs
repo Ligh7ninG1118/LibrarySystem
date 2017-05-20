@@ -23,6 +23,8 @@ namespace LibrarySys
     {
         private OleDbConnection _dbConn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + "userdb.mdb");
         private OleDbDataAdapter _dbAda;
+        private int uid = -1;
+        private int logfailedcnt = 0;
         public wLogin()
         {
             InitializeComponent();
@@ -82,11 +84,11 @@ namespace LibrarySys
                 if (role == "Admin")
                 {
                     wAdmin wa = new wAdmin();
-                    wa.Show(); 
+                    wa.Show();
                 }
                 else
                 {
-                    wUser wu = new wUser();
+                    wUser wu = new wUser(uid);
                     wu.Show();
                 }
                 this.Close();
@@ -95,18 +97,24 @@ namespace LibrarySys
             {
                 ErrorMsgOutput(rtxtWrnPass, "Password Wrong");
                 txtPass.BorderBrush = Brushes.Red;
+                logfailedcnt++;
+                if(logfailedcnt==3)
+                {
+                    MessageBox.Show("Failed attempts reached 3 times");
+                    this.Close();
+                }
             }
             if (ans == 2)
             {
                 ErrorMsgOutput(rtxtWrnUser, "Username Does Not Exists");
                 txtUser.BorderBrush = Brushes.Red;
             }
-            if(ans==3)//Pending
+            if (ans == 3)//Pending
             {
                 ErrorMsgOutput(rtxtWrnUser, "Regeister Request is Still Pending");
                 txtUser.BorderBrush = Brushes.Red;
             }
-            if(ans==4)
+            if (ans == 4)
             {
                 ErrorMsgOutput(rtxtWrnUser, "Regeister Request failed");
                 txtUser.BorderBrush = Brushes.Red;
@@ -163,12 +171,15 @@ namespace LibrarySys
             }
             if (dbp == null)
                 return 2;
-            if(dbs == "Pending") //Pending
+            if (dbs == "Pending") //Pending
                 return 3;
             if (dbs == "Rejected")//Failed
                 return 4;
             else if (p == dbp)
+            {
+                uid = Convert.ToInt32(dt.Tables[0].Rows[0]["ID"].ToString());
                 return 0;
+            }
             else
                 return 1;
         }
