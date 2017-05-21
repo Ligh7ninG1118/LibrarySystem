@@ -80,8 +80,16 @@ namespace LibrarySys
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView selElem = (DataRowView)dgBooks.SelectedItem;
+            DataSet bd = new DataSet();
+            string bn = selElem.Row[1].ToString();
+            string cmd = "select * from Books where [Bookname] = '" + bn + "'";
+            _dbAda = new OleDbDataAdapter(cmd, _dbConnBook);
+            OleDbCommandBuilder cb = new OleDbCommandBuilder(_dbAda);
+            _dbAda.Fill(bd);
 
-
+            wBookEdit wb = new wBookEdit(Convert.ToInt32(bd.Tables[0].Rows[0]["ID"]));
+            wb.ShowDialog();
         }
 
         private void dgBooks_Loaded(object sender, RoutedEventArgs e)

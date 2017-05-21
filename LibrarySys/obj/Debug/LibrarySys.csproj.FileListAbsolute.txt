@@ -24,3 +24,5 @@ C:\Users\lt111\Documents\Visual Studio 2017\Projects\LibrarySys\LibrarySys\obj\D
 C:\Users\lt111\Documents\Visual Studio 2017\Projects\LibrarySys\LibrarySys\obj\Debug\wAdAdm.baml
 C:\Users\lt111\Documents\Visual Studio 2017\Projects\LibrarySys\LibrarySys\obj\Debug\wAddBook.g.cs
 C:\Users\lt111\Documents\Visual Studio 2017\Projects\LibrarySys\LibrarySys\obj\Debug\wAddBook.baml
+C:\Users\lt111\documents\visual studio 2017\Projects\LibrarySys\LibrarySys\obj\Debug\wBookEdit.g.cs
+C:\Users\lt111\documents\visual studio 2017\Projects\LibrarySys\LibrarySys\obj\Debug\wBookEdit.baml
