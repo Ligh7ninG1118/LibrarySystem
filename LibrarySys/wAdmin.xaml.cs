@@ -14,9 +14,16 @@ namespace LibrarySys
         private OleDbConnection _dbConnUser = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + "userdb.mdb");
         private OleDbConnection _dbConnBook = new OleDbConnection("Provider = Microsoft.Jet.OLEDB.4.0; Data Source ="+ "bookdb.mdb");
         private OleDbDataAdapter _dbAda;
-        public wAdmin()
+        private int uid = -1;
+        public wAdmin(int id)
         {
             InitializeComponent();
+            uid = id;
+            string cmd = "select * from Admin where [ID] = " + uid;
+            _dbAda = new OleDbDataAdapter(cmd, _dbConnUser);
+            DataSet ds = new DataSet();
+            _dbAda.Fill(ds);
+            lblWel.Content = "Welcome " + ds.Tables[0].Rows[0]["username"].ToString();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

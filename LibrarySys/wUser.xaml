@@ -16,6 +16,7 @@
                 <Button x:Name="btnRtn" Content="Return Book" HorizontalAlignment="Left" Height="60" Margin="968,186,0,0" VerticalAlignment="Top" Width="190" Click="btnRtn_Click"/>
                 <Button x:Name="btnRef" Content="Refresh" HorizontalAlignment="Left" Height="60" Margin="968,266,0,0" VerticalAlignment="Top" Width="190" Click="btnRef_Click"/>
                 <Button x:Name="btnExit" Content ="Log Out" HorizontalAlignment="Left" Height="60" Margin="968,346,0,0" VerticalAlignment="Top" Width="190" Click="btnExit_Click" />
-            </Grid>
+            <Label x:Name="lblWel" Content="" HorizontalAlignment="Left" Height="32" Margin="60,10,0,0" VerticalAlignment="Top" Width="356"/>
+        </Grid>
     </Grid>
 </Window>

@@ -83,7 +83,7 @@ namespace LibrarySys
             {
                 if (role == "Admin")
                 {
-                    wAdmin wa = new wAdmin();
+                    wAdmin wa = new wAdmin(uid);
                     wa.Show();
                 }
                 else
@@ -151,7 +151,10 @@ namespace LibrarySys
             if (dbp == null)
                 return 2;
             else if (p == dbp)
+            {
+                uid = Convert.ToInt32(dt.Tables[0].Rows[0]["ID"].ToString());
                 return 0;
+            }
             else
                 return 1;
         }

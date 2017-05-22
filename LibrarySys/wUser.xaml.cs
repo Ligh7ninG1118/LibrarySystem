@@ -20,6 +20,7 @@ namespace LibrarySys
     public partial class wUser : Window
     {
         private OleDbConnection _dbConnBook = new OleDbConnection("Provider = Microsoft.Jet.OLEDB.4.0; Data Source =" + "bookdb.mdb");
+        private OleDbConnection _dbConnUser = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + "userdb.mdb");
         private OleDbDataAdapter _dbAda;
         private int userid = -1;
 
@@ -27,6 +28,11 @@ namespace LibrarySys
         {
             InitializeComponent();
             userid = uid;
+            string cmd = "select * from Nuser where [ID] = " + uid;
+            _dbAda = new OleDbDataAdapter(cmd, _dbConnUser);
+            DataSet ds = new DataSet();
+            _dbAda.Fill(ds);
+            lblWel.Content = "Welcome " + ds.Tables[0].Rows[0]["username"].ToString();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -60,17 +66,25 @@ namespace LibrarySys
             _dbAda = new OleDbDataAdapter(cmd, _dbConnBook);
             OleDbCommandBuilder cb = new OleDbCommandBuilder(_dbAda);
             _dbAda.Fill(bd);
+            int bid = Convert.ToInt32(bd.Tables[0].Rows[0]["ID"]);
             bd.Tables[0].Rows[0]["StoNum"] = (int)bd.Tables[0].Rows[0]["StoNum"] - 1;
             selElem.Row[5] = (int)selElem.Row[5] - 1;
             _dbAda.Update(bd);
             MessageBox.Show("Borrowed Success");
-
-            //TODO 借书情况记录到用户上
+            
+            string cmd2 = "select * from Nuser where [ID] = " + userid;
+            _dbAda = new OleDbDataAdapter(cmd2, _dbConnUser);
+            DataSet ud = new DataSet();
+            cb = new OleDbCommandBuilder(_dbAda);
+            _dbAda.Fill(ud);
+            ud.Tables[0].Rows[0]["brwed"] += bid + ",";
+            _dbAda.Update(ud);
         }
 
         private void btnRtn_Click(object sender, RoutedEventArgs e)
         {
-
+            wRtn wr = new wRtn(userid);
+            wr.Show();
         }
 
         private void btnRef_Click(object sender, RoutedEventArgs e)

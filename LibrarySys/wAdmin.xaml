@@ -21,6 +21,7 @@
                     <Button x:Name="btnRefU" Content="Refresh" HorizontalAlignment="Left" Height="60" Margin="936,396,0,0" VerticalAlignment="Top" Width="190" Click="btnRef_Click"/>
                     <Button x:Name="btnExitU" Content="Log Out" HorizontalAlignment="Left" Height="60" Margin="936,497,0,0" VerticalAlignment="Top" Width="190" Click="btnExit_Click"/>
                     <Button x:Name="btnApv" Content="Approve" HorizontalAlignment="Left" Height="60" Margin="936,188,0,0" VerticalAlignment="Top" Width="190" Click="btnApv_Click"/>
+                    <Label x:Name="lblWel" Content="" HorizontalAlignment="Left" Height="38" Margin="43,10,0,0" VerticalAlignment="Top" Width="395"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Library Management" FontSize="20">

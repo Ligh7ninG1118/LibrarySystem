@@ -73,6 +73,9 @@
     <Compile Include="wRegi.xaml.cs">
       <DependentUpon>wRegi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="wRtn.xaml.cs">
+      <DependentUpon>wRtn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wUser.xaml.cs">
       <DependentUpon>wUser.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="wRegi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="wRtn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
