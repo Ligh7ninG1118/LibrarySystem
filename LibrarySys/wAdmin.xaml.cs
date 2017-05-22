@@ -89,6 +89,11 @@ namespace LibrarySys
         {
             DataRowView selElem = (DataRowView)dgBooks.SelectedItem;
             DataSet bd = new DataSet();
+            if(selElem == null)
+            {
+                MessageBox.Show("Please select one book to edit");
+                return;
+            }
             string bn = selElem.Row[1].ToString();
             string cmd = "select * from Books where [Bookname] = '" + bn + "'";
             _dbAda = new OleDbDataAdapter(cmd, _dbConnBook);
@@ -131,6 +136,7 @@ namespace LibrarySys
             OleDbCommandBuilder cb = new OleDbCommandBuilder(_dbAda);
             _dbAda.Fill(ud);
             ud.Tables[0].Rows[0]["status"] = "Approved";
+            ud.Tables[0].Rows[0]["brwed"] = -1;
             selElem.Row[3] = "Approved";
             _dbAda.Update(ud);
         }

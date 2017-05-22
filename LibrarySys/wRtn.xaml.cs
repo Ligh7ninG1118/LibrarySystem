@@ -35,14 +35,7 @@ namespace LibrarySys
             OleDbCommandBuilder cb = new OleDbCommandBuilder(_dbAda);
             _dbAda.Fill(ud);
             brw_coll = ud.Tables[0].Rows[0]["brwed"].ToString();
-            string[] str = brw_coll.Split(',');
-            if(str.Length==1)
-                cmd_book = "select * from Books where [ID] in (" + Convert.ToInt32(str[0]) +")";
-            if (str.Length==2)
-                    cmd_book = "select * from Books where [ID] in (" + Convert.ToInt32(str[0]) + "," + Convert.ToInt32(str[1])+ ")";
-            if (str.Length==3)
-                cmd_book = "select * from Books where [ID] in (" + Convert.ToInt32(str[0]) + ","+ Convert.ToInt32(str[1])+ "," + Convert.ToInt32(str[2]) + ")";
-
+            cmd_book = "select * from Books where [ID] = " + Convert.ToInt32(brw_coll);
             _dbAda = new OleDbDataAdapter(cmd_book, _dbConnBook);
             cb = new OleDbCommandBuilder(_dbAda);
             DataTable bd = new DataTable();
@@ -59,8 +52,10 @@ namespace LibrarySys
         {
             DataRowView selElem = (DataRowView)dgvBooks.SelectedItem;
             DataSet bd = new DataSet();
+            DataSet ud = new DataSet();
             string bn = selElem.Row[1].ToString();
             string cmd = "select * from Books where [BookName] = '" + bn + "'";
+            string cmd2 = "select * from Nuser where [ID] = " + uid;
             _dbAda = new OleDbDataAdapter(cmd, _dbConnBook);
             OleDbCommandBuilder cb = new OleDbCommandBuilder(_dbAda);
             _dbAda.Fill(bd);
@@ -68,7 +63,14 @@ namespace LibrarySys
             bd.Tables[0].Rows[0]["StoNum"] = (int)bd.Tables[0].Rows[0]["StoNum"] + 1;
             selElem.Row[5] = (int)selElem.Row[5] + 1;
             _dbAda.Update(bd);
+
+            _dbAda = new OleDbDataAdapter(cmd2, _dbConnUser);
+            cb = new OleDbCommandBuilder(_dbAda);
+            _dbAda.Fill(ud);
+            ud.Tables[0].Rows[0]["brwed"] = -1;
+            _dbAda.Update(ud);
             MessageBox.Show("Return Success");
+            this.Close();
         }
     }
 }

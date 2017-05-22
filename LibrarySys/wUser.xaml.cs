@@ -60,31 +60,54 @@ namespace LibrarySys
                 MessageBox.Show("Selected book has borrowed out");
                 return;
             }
+
+            string cmd2 = "select * from Nuser where [ID] = " + userid;
+            _dbAda = new OleDbDataAdapter(cmd2, _dbConnUser);
+            DataSet ud = new DataSet();
+            OleDbCommandBuilder cb = new OleDbCommandBuilder(_dbAda);
+            _dbAda.Fill(ud);
+            if (Convert.ToInt32(ud.Tables[0].Rows[0]["brwed"]) != -1)
+            {
+                MessageBox.Show("You have already borrowed one book");
+                return;
+            }
             DataSet bd = new DataSet();
             string bn = selElem.Row[1].ToString();
             string cmd = "select * from Books where [BookName] = '" + bn + "'";
             _dbAda = new OleDbDataAdapter(cmd, _dbConnBook);
-            OleDbCommandBuilder cb = new OleDbCommandBuilder(_dbAda);
+            cb = new OleDbCommandBuilder(_dbAda);
             _dbAda.Fill(bd);
             int bid = Convert.ToInt32(bd.Tables[0].Rows[0]["ID"]);
             bd.Tables[0].Rows[0]["StoNum"] = (int)bd.Tables[0].Rows[0]["StoNum"] - 1;
             selElem.Row[5] = (int)selElem.Row[5] - 1;
             _dbAda.Update(bd);
             MessageBox.Show("Borrowed Success");
-            
-            string cmd2 = "select * from Nuser where [ID] = " + userid;
+
             _dbAda = new OleDbDataAdapter(cmd2, _dbConnUser);
-            DataSet ud = new DataSet();
+            ud = new DataSet();
             cb = new OleDbCommandBuilder(_dbAda);
             _dbAda.Fill(ud);
-            ud.Tables[0].Rows[0]["brwed"] += bid + ",";
+            
+            ud.Tables[0].Rows[0]["brwed"] = bid;
             _dbAda.Update(ud);
         }
 
         private void btnRtn_Click(object sender, RoutedEventArgs e)
         {
-            wRtn wr = new wRtn(userid);
-            wr.Show();
+            DataSet ud = new DataSet();
+            string cmd = "select * from Nuser where [ID] = " + userid;
+            _dbAda = new OleDbDataAdapter(cmd, _dbConnUser);
+            _dbAda.Fill(ud);
+            if (Convert.ToInt32(ud.Tables[0].Rows[0]["brwed"]) == -1)
+            {
+                MessageBox.Show("You havnt borrowed any book");
+
+            }
+            else
+            {
+                wRtn wr = new wRtn(userid);
+                wr.Show();
+            }
         }
 
         private void btnRef_Click(object sender, RoutedEventArgs e)
