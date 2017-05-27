@@ -6,9 +6,7 @@ using System.Data.OleDb;
 
 namespace LibrarySys
 {
-    /// <summary>
-    /// Interaction logic for wAdmin.xaml
-    /// </summary>
+    
     public partial class wAdmin : Window
     {
         private OleDbConnection _dbConnUser = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + "userdb.mdb");

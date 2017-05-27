@@ -15,9 +15,7 @@ using System.Data.OleDb;
 
 namespace LibrarySys
 {
-    /// <summary>
-    /// Interaction logic for wRegi.xaml
-    /// </summary>
+    
     public partial class wRegi : Window
     {
         private OleDbConnection _dbConn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + "userdb.mdb");

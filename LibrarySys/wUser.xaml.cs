@@ -14,9 +14,7 @@ using System.Data;
 
 namespace LibrarySys
 {
-    /// <summary>
-    /// Interaction logic for wUser.xaml
-    /// </summary>
+    
     public partial class wUser : Window
     {
         private OleDbConnection _dbConnBook = new OleDbConnection("Provider = Microsoft.Jet.OLEDB.4.0; Data Source =" + "bookdb.mdb");
